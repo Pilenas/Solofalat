@@ -1,6 +1,6 @@
 import nedb from 'nedb-promises';
 
-const database = new nedb({ filename : 'services/cart.db', autoload : true});
+const database = new nedb({ filename : 'services/cart.db', autoload : true });
 
 // Add new coffee to cart
 async function addItemToCart(item) {
@@ -21,4 +21,13 @@ async function getCartItems() {
     }
 }
 
-export { addItemToCart, getCartItems };
+// DELETE specific coffee from cart
+async function removeItemFromCart(id) {
+    try {
+       return await database.remove({ id : parseInt(id) }, {});
+    } catch(error) {
+        console.error(error);
+    }
+}
+
+export { addItemToCart, getCartItems, removeItemFromCart };
