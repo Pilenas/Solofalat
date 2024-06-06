@@ -1,22 +1,23 @@
 import nedb from 'nedb-promises';
 
-const database = new nedb({ filename : 'services/cart.db', autoload : true});
+const database = new nedb({ filename: 'services/cart.db', autoload: true });
 
 // Add new coffee to cart
 async function addItemToCart(item) {
     try {
         return await database.insert(item);
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
 }
 
-// GET all coffees from cart
+// GET all coffees from cart and calculate total price
 async function getCartItems() {
     try {
-        const coffees = await database.find({});
-        return coffees;
-    } catch(error) {
+        const items = await database.find({});
+        const total = items.reduce((sum, item) => sum + item.price, 0);
+        return { items, total };
+    } catch (error) {
         console.error(error);
     }
 }
