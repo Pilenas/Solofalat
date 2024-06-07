@@ -3,6 +3,7 @@ import cors from 'cors';
 import cartRoutes from './routes/cart.js';
 import menuRouter from './routes/menu.js';
 import aboutRouter from "./routes/about.js";
+import authRouter from './routes/auth.js';
 
 const app = express();
 const PORT = 8080;
@@ -15,6 +16,7 @@ app.use(cors());
 app.use('/api/cart', cartRoutes);
 app.use('/menu', menuRouter);
 app.use("/about", aboutRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
