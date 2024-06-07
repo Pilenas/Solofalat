@@ -1,5 +1,10 @@
 import nedb from "nedb-promises";
 
+const ordersDb = new nedb({
+  filename: "services/orders.db",
+  autoload: true,
+});
+
 const orderHistoryDb = new nedb({
   filename: "services/orderHistory.db",
   autoload: true,
@@ -62,9 +67,35 @@ async function getOrderHistoryById(id) {
   }
 }
 
+// Function to create a new order
+async function createOrder(orderData) {
+  try {
+    const newOrder = await ordersDb.insert(orderData);
+    return newOrder;
+  } catch (error) {
+    throw new Error("Failed to create order");
+  }
+}
+
+// Function to get an order by ID
+async function getOrderById(orderId) {
+  try {
+    const order = await ordersDb.findOne({ _id: orderId });
+    if (!order) {
+      throw new Error("Order not found");
+    }
+    return order;
+  } catch (error) {
+    throw new Error("Failed to fetch order");
+  }
+}
+
 export {
   createOrUpdateOrderHistory,
   getAllOrderHistories,
   getOrderHistoryById,
+  createOrder,
+  getOrderById,
   orderHistoryDb,
+  ordersDb,
 };
