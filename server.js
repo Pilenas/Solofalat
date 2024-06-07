@@ -4,7 +4,8 @@ import cartRoutes from './routes/cart.js';
 import menuRouter from './routes/menu.js';
 import aboutRouter from './routes/about.js';
 import authRouter from './routes/auth.js';
-import orderRouter from './routes/orders.js';
+import deliveryRouter from './routes/delivery.js';
+import ordersRouter from './routes/orders.js';  // Importera ordersRouter
 
 const app = express();
 const PORT = 8080;
@@ -15,10 +16,11 @@ app.use(cors());
 
 // Routes
 app.use('/api/cart', cartRoutes);
-app.use('/menu', menuRouter);
+app.use('/menu', menuRouter);       // Alla kaffesorter på menyn http://localhost:8080/menu/titles
 app.use('/about', aboutRouter);
 app.use('/auth', authRouter);
-app.use('/order', orderRouter);
+app.use('/delivery', deliveryRouter);    // Estimated delivery   http://localhost:8080/delivery/15
+app.use('/api/orders', ordersRouter);  //  OrdersHistoy  http://localhost:8080/api/orders/all
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);

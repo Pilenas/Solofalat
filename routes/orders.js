@@ -1,17 +1,15 @@
-import { Router } from "express";
-import { orders } from "../config/orderdata.js";
+import express from "express";
+import { getAllOrderHistoriesHandler, getOrderHistory, saveOrderHistory } from "../controllers/orderHistoryController.js";
 
-const router = Router();
+const router = express.Router();
 
-router.get('/:orderId', (req, res) => {
-    const orderId = req.params.orderId;
-    const order = orders[orderId];
+// POST route for saving order history
+router.post("/", saveOrderHistory);
 
-    if (order) {
-    res.json(order);
-        } else {
-            res.status(404).json({ message: 'Order not found' });
-}
-});
+// GET route for fetching all order histories
+router.get("/all", getAllOrderHistoriesHandler);
+
+// GET route for fetching an order history by userId
+router.get("/", getOrderHistory);
 
 export default router;
