@@ -1,6 +1,3 @@
-
-
-
 import { Router } from "express";
 import { aboutInfo } from "../config/about.js";
 

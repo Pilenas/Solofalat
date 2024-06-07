@@ -17,7 +17,7 @@ app.use(cors());
 // Routes
 app.use('/api/cart', cartRoutes);
 app.use('/menu', menuRouter);       // Alla kaffesorter på menyn http://localhost:8080/menu/titles
-app.use('/about', aboutRouter);
+app.use('/about', aboutRouter);      //  //GET localhost:8080/about
 app.use('/auth', authRouter);
 app.use('/delivery', deliveryRouter);    // Estimated delivery   http://localhost:8080/delivery/15
 app.use('/api/orders', ordersRouter);  //  OrdersHistoy  http://localhost:8080/api/orders/all
