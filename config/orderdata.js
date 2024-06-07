@@ -1,4 +1,4 @@
-const orders = {
+const delivery = {
     '1': { id: '1', status: 'Under transport', estimatedDelivery: '2024-06-10', deliveryProgress: 70 },
     '2': { id: '2', status: 'Delivered', estimatedDelivery: '2024-06-05', deliveryProgress: 100 },
     '3': { id: '3', status: 'Pending', estimatedDelivery: '2024-06-15', deliveryProgress: 20 },
@@ -21,5 +21,4 @@ const orders = {
     '20': { id: '20', status: 'In Processing', estimatedDelivery: '2024-06-16', deliveryProgress: 50 }
 };
 
-
-export { orders };
+export { delivery };
