@@ -5,7 +5,9 @@ import menuRouter from './routes/menu.js';
 import aboutRouter from './routes/about.js';
 import authRouter from './routes/auth.js';
 import deliveryRouter from './routes/delivery.js';
-import ordersRouter from './routes/orders.js';  // Importera ordersRouter
+import ordersRouter from './routes/orders.js';
+import productsRouter from './routes/products.js'; // Importera productsRouter
+import offersRouter from './routes/offers.js'; // Importera offersRouter
 
 const app = express();
 const PORT = 8080;
@@ -17,10 +19,12 @@ app.use(cors());
 // Routes
 app.use('/api/cart', cartRoutes);
 app.use('/menu', menuRouter);       // Alla kaffesorter på menyn http://localhost:8080/menu/titles
-app.use('/about', aboutRouter);      //  //GET localhost:8080/about
+app.use('/about', aboutRouter);     // GET localhost:8080/about
 app.use('/auth', authRouter);
-app.use('/delivery', deliveryRouter);    // Estimated delivery   http://localhost:8080/delivery/15
-app.use('/api/orders', ordersRouter);  //  OrdersHistoy  http://localhost:8080/api/orders/all
+app.use('/delivery', deliveryRouter); // Estimated delivery http://localhost:8080/delivery/15
+app.use('/api/orders', ordersRouter); // OrdersHistory http://localhost:8080/api/orders/all
+app.use('/api/products', productsRouter); // Lägg till produkter
+app.use('/api/offers', offersRouter); // Lägg till kampanjer
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
